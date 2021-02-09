@@ -1,0 +1,66 @@
+<%- include("../partials/header") %>
+<body class="d-flex flex-column vh-100">
+    <!-- Adding Nav bar-->
+    <%- include("../partials/nav") %>
+
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-6">
+                <%- include("../partials/flash") %>
+                <div class="alert alert-primary" role="alert">
+                    Register New User
+                </div>
+                <form action="/user/register" method="POST">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Display Name</label>
+                        <input type="text" class="form-control" id="username" placeholder="Display Name" name="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="password" name="password" required>
+                    </div>
+                    <div>
+                        <p>Register As</p>
+                    </div>
+                    <!--Radio Button-->
+                    <div class="form-check mb-1">
+                        <input class="form-check-input" type="radio" name="usertype" id="usertypeinstructor" value="1">
+                        <label class="form-check-label" for="usertypeadmin">
+                          Instuctor
+                        </label>
+                      </div>
+                      <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="usertype" id="usertypestudent" value="2">
+                        <label class="form-check-label" for="usertypestudent">
+                          Student
+                        </label>
+                      </div>
+
+                    <div class="mb-3">
+                        <button class="btn btn-sm btn-success" id="btnLogin" name="btnLogin">Sign up</button>
+                        <button type="button" class="btn btn-sm btn-warning" id="btnReset" name="btnReset">Reset</button>
+                    </div>
+                </form>
+                
+            </div>
+
+        </div>
+    </div>
+
+    <%- include("../partials/footer") %>
+    <%- include("../partials/bootstrap-js") %>
+    <script type="text/javascript">
+        document.getElementById("btnReset").addEventListener("click",()=>{
+            document.getElementById("email").value="";
+            document.getElementById("password").value="";
+            document.getElementById("username").value="";
+            document.getElementById("usertypeinstructor").checked=false;
+            document.getElementById("usertypestudent").checked=false;
+        })
+    </script>
+</body>
+</html>

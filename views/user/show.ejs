@@ -1,0 +1,82 @@
+<%- include("../partials/header") %>
+<body class="d-flex flex-column vh-100">
+    <!-- Adding Nav bar-->
+    <%- include("../partials/nav") %>
+    <div class="container my-3">
+        <%- include("../partials/flash") %>
+        <div class ="row">
+            <div class="col-md-6">
+                <form action="/user/<%=foundUser._id%>/edit/profile?_method=PATCH" method="POST">
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="row my-3">
+                                    <h3>Edit Profile</h3>
+                                </div>
+                                <div class="form-group row my-1">
+                                    <label for="username" class="col-sm-3 col-form-label">Display Name</label>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control" id="username" name="username" value="<%=foundUser.username%>">
+                                    </div>
+                                </div>
+        
+                                <div class="form-group row my-1">
+                                    <label for="email" class="col-sm-3 col-form-label">Email</label>
+                                    <div class="col-sm-8">
+                                        <input readonly type="text" class="form-control" id="email" name="email" value="<%=foundUser.email%>">
+                                    </div>
+                                </div>
+        
+                                <div class="form-group row my-1">
+                                    <label for="usertype" class="col-sm-3 col-form-label">User Type</label>
+                                    <div class="col-sm-8">
+                                        <input readonly type="text" class="form-control" id="usertype" name="usertype" value="<%=foundUser.usertype === "1" ? 'Instructor' : 'Student'%>">
+                                    </div>
+                                </div>
+                                <button class="btn btn-success my-3">Update Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--PASSWORD CHANGE-->
+            <div class="col-md-6">
+                <form action="/user/<%=foundUser._id%>/edit/password?_method=PATCH" method="POST">
+                    <div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="row my-3">
+                                    <h3>Change Password</h3>
+                                </div>
+                                <div class="form-group row my-1">
+                                    <label for="newpassword" class="col-sm-3 col-form-label">New Password</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="newpassword" name="newpassword" placeholder="New Password" required>
+                                    </div>
+                                </div>
+        
+                                <div class="form-group row my-1">
+                                    <label for="confirmpassword" class="col-sm-3 col-form-label">Confirm Password</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" class="form-control" id="confirmpassword" name="confirmpassword" placeholder="Confirm Password" requred> 
+                                    </div>
+                                </div>
+        
+                                <button class="btn btn-success my-3">Change Password</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+
+    </div> <!--End of container-->
+
+
+    <%- include("../partials/footer") %>
+    <%- include("../partials/bootstrap-js") %>
+
+    
+</body>
+</html>

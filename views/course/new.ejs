@@ -1,0 +1,86 @@
+<%- include("../partials/header") %>
+<body class="d-flex flex-column vh-100">
+    <!-- Adding Nav bar-->
+    <%- include("../partials/nav") %>
+
+    <div class="container">
+        <%- include("../partials/flash") %>
+        <form action="/courses/new" method="POST">
+            <div class="row my-3">
+                <div class="col-3">
+                    <a href="/user/<%=userid%>/edit" class="text-decoration-none"><%=username%></a>
+                </div>
+            </div>
+
+            <div class="row my-3">
+                <h3>Add a new course</h3>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group row my-1">
+                        <label for="name" class="col-sm-3 col-form-label">Course Name</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="name" name="course[name]">
+                        </div>
+                    </div>
+                    <div class="form-group row my-1">
+                        <label for="category" class="col-sm-3 col-form-label">Category</label>
+                        <div class="col-sm-8">
+                            <select name="course[category]" id="category" class="form-control" required>
+                                <option value="">Choose...</option>
+                                <%categories.forEach((category,index)=>{%>
+                                    <option value=<%=index%>><%=category%></option>
+                                <%})%>
+                                
+                                
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group row my-1">
+                        <label for="oneLiner" class="col-sm-3 col-form-label">One Liner</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="oneLiner" name="course[oneLiner]">
+                        </div>
+                    </div>
+
+                    <div class="form-group row my-1">
+                        <label for="description" class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" name="course[description]" id="description" cols="30" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row my-1">
+                        <label for="duration" class="col-sm-3 col-form-label">Duration</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="duration" name="course[duration]">
+                        </div>
+                    </div>
+
+                    <div class="form-group row my-1">
+                        <label for="photo" class="col-sm-3 col-form-label">Photo URL</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="photo" name="course[photo]">
+                        </div>
+                    </div>
+
+
+                        <button class="btn btn-success mt-3">Add Course</button>
+                </div>
+            </div>
+                
+              
+
+        </form>
+    </div> <!--End of main DIV-->
+    
+    
+
+    <%- include("../partials/footer") %>
+    <%- include("../partials/bootstrap-js") %>
+
+    
+</body>
+</html>

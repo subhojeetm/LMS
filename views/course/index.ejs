@@ -1,0 +1,72 @@
+<%- include("../partials/header") %>
+<body class="d-flex flex-column vh-100">
+    <!-- Adding Nav bar-->
+    <%- include("../partials/nav") %>
+
+    <div class="container">
+        <div class="row mt-3">
+            <div class="row">
+                <div class="col-4">
+                    <%- include("../partials/flash") %>
+                </div>
+            </div>
+            
+            <div class="col-3">
+                <a href="/user/<%=userid%>/edit" class="text-decoration-none"><%=username%></a>
+            </div>
+            <div class='col-6'>
+                
+            </div>
+            <div class='col-3'>
+                <%if(usertype === "1") {%>
+                    <a href="/courses/new" class="btn btn-primary">+ Add Course</a>
+                <%}%>
+            </div>
+        </div> <!--End of first row-->
+
+        <!-- Show the courses -->
+        <div class="row justify-content-center">
+            <%courses.forEach((course)=>{%>
+                <div class="col-md-3 mx-1 my-3">
+                    <div class="card h-100" >
+                        <div class="d-flex justify-content-center">
+                            <img src="<%=course.photo%>" class="card-img-top" alt="Course Photo" style="height: 8rem;width: 10rem;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><%=course.name%></h5>
+                            <p class="card-text">
+                            <%=course.oneLiner%>
+                            <br/>
+                            <small><span class="text-muted fst-italic">Duration <%=course.duration%> Hours</span></small>
+                            </p>
+                            
+                        </div>
+                        <div class="card-footer">
+                            <%if(usertype !== "1") {%>
+                                <a href="/courses/<%=course._id%>" class="btn btn-info btn-sm">Learn More</a>
+                            <%}%>
+                            <%if(usertype === "1") {%>
+                                <a href="/courses/<%=course._id%>/edit" class="btn btn-warning btn-sm">Edit</a>
+                                <form action="/courses/<%=course._id%>?_method=DELETE" class="d-inline" method="POST">
+                                    <button class="btn btn-danger btn-sm">Delete</button>
+                                </form>
+                            <%}%>
+                            
+                        </div>
+                    </div> <!-- End of Card -->  
+                </div>
+            <%})%>
+            
+
+            
+        </div> <!--End of DIV of Cards-->
+        
+    </div> <!-- The main container DIV -->
+    
+
+    <%- include("../partials/footer") %>
+    <%- include("../partials/bootstrap-js") %>
+
+    
+</body>
+</html>

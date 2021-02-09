@@ -1,0 +1,71 @@
+<%- include("../partials/header") %>
+<body class="d-flex flex-column vh-100">
+    <!-- Adding Nav bar-->
+    <%- include("../partials/nav") %>
+
+    <div class="container">
+        <%- include("../partials/flash") %>
+        <form action="/courses/" method="GET">
+            <div class="row my-3">
+                <div class="col-3">
+                    <a href="/user/<%=userid%>/edit" class="text-decoration-none"><%=username%></a>
+                </div>
+            </div>
+
+            <div class="row my-3">
+                <h3>Course Details</h3>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group row my-1">
+                        <label for="name" class="col-sm-3 col-form-label">Course Name</label>
+                        <div class="col-sm-8">
+                            <input readonly type="text" class="form-control" id="name" name="course[name]" value="<%=foundCourse.name%>">
+                        </div>
+                    </div>
+                    <div class="form-group row my-1">
+                        <label for="category" class="col-sm-3 col-form-label">Category</label>
+                        <div class="col-sm-8">
+                            <input readonly type="text" class="form-control" id="category" name="course[category]" value="<%=foundCourse.category%>">
+                        </div>
+
+                    </div>
+                    <div class="form-group row my-1">
+                        <label for="oneLiner" class="col-sm-3 col-form-label">One Liner</label>
+                        <div class="col-sm-8">
+                            <input readonly type="text" class="form-control" id="oneLiner" name="course[oneLiner]" value="<%= foundCourse.oneLiner %>" >
+                        </div>
+                    </div>
+
+                    <div class="form-group row my-1">
+                        <label for="description" class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-8">
+                            <textarea readonly class="form-control" name="course[description]" id="description" cols="30" rows="3"><%= foundCourse.description %></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row my-1">
+                        <label for="duration" class="col-sm-3 col-form-label">Duration</label>
+                        <div class="col-sm-8">
+                            <input readonly type="number" class="form-control" id="duration" name="course[duration]" value="<%= foundCourse.duration %>">
+                        </div>
+                    </div>
+
+                        <a href="/courses" class="btn btn-primary mt-3">All Courses</a>
+                </div>
+            </div>
+                
+              
+
+        </form>
+    </div> <!--End of main DIV-->
+    
+    
+
+    <%- include("../partials/footer") %>
+    <%- include("../partials/bootstrap-js") %>
+
+    
+</body>
+</html>
